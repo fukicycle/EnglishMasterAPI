@@ -9,6 +9,11 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.MapControllerRoute(
+    name: "default",
+    pattern: "api/{action}/{controller}/{id?}"
+);
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
