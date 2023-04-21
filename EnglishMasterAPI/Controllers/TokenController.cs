@@ -47,7 +47,7 @@ namespace EnglishMasterAPI.Controllers
             }
         }
 
-        public string GenerateToken(long id)
+        private string GenerateToken(long id)
         {
             StringBuilder sb = new StringBuilder();
             for (int len = 0; len < 64; len++)
