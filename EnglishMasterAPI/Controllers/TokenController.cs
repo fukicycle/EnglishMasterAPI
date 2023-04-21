@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EnglishMasterAPI.Controllers
 {
-    [Route("api/{action}/{controller}")]
+    [Route("api/[action]/[controller]")]
     [ApiController]
     public class TokenController : ControllerBase
     {
