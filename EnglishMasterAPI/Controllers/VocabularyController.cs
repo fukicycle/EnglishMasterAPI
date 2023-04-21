@@ -15,6 +15,34 @@ namespace EnglishMasterAPI.Controllers
             _db = db;
         }
 
+        [HttpGet]
+        public IActionResult Get(int min = 0, int max = int.MaxValue)
+        {
+            try
+            {
+                List<Vocabulary> vocabularyList = _db.Vocabularies.ToList();
+                min = min - 1;
+                int maxSize = vocabularyList.Count;
+                if (max > maxSize) max = maxSize;
+                if (min < 0) min = 0;
+                return Ok(new ResultContent<List<Vocabulary>>()
+                {
+                    Message = "Success",
+                    Content = vocabularyList.GetRange(min, max - min),
+                    StatusCode = System.Net.HttpStatusCode.OK
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new ResultContent<string>
+                {
+                    Message = "Internal Server Error",
+                    Content = ex.Message,
+                    StatusCode = System.Net.HttpStatusCode.InternalServerError
+                });
+            }
+        }
+
         [HttpPost]
         public IActionResult Post([FromHeader] string token, List<VocabularyData> vocabularyDatas)
         {
@@ -95,6 +123,5 @@ namespace EnglishMasterAPI.Controllers
                 });
             }
         }
-
     }
 }
