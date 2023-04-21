@@ -17,6 +17,7 @@ namespace EnglishMasterAPI.Models
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public string? Icon { get; set; }
+        public string? Token { get; set; }
 
         public virtual ICollection<ExamResult> ExamResults { get; set; }
         public virtual ICollection<PracticeResult> PracticeResults { get; set; }

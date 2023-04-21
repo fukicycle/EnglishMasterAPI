@@ -160,6 +160,11 @@ namespace EnglishMasterAPI.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Token)
+                    .HasMaxLength(64)
+                    .IsUnicode(false)
+                    .IsFixedLength();
+
                 entity.Property(e => e.Username)
                     .HasMaxLength(50)
                     .IsUnicode(false);
