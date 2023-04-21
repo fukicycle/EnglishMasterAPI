@@ -15,14 +15,17 @@ namespace EnglishMasterAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(int min = 0, int max = int.MaxValue)
         {
             try
             {
+                int maxSize = _db.Words.ToList().Count;
+                if (max > maxSize) max = maxSize;
+                if (min < 0) min = 0;
                 return Ok(new ResultContent<List<Word>>
                 {
                     Message = "Success",
-                    Content = _db.Words.ToList(),
+                    Content = _db.Words.ToList().GetRange(min, max - min),
                     StatusCode = System.Net.HttpStatusCode.OK
                 });
             }
