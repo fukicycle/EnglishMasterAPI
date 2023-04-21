@@ -19,6 +19,7 @@ namespace EnglishMasterAPI.Controllers
         {
             try
             {
+                min = min - 1;
                 int maxSize = _db.Words.ToList().Count;
                 if (max > maxSize) max = maxSize;
                 if (min < 0) min = 0;
