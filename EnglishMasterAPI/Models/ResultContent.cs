@@ -6,6 +6,6 @@ namespace EnglishMasterAPI.Models
     {
         public string Message { get; set; } = null!;
         public HttpStatusCode StatusCode { get; set; } = HttpStatusCode.OK;
-        public T Content { get; set; }
+        public T Content { get; set; } = default!;
     }
 }
